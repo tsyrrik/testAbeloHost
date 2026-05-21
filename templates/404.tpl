@@ -1,0 +1,7 @@
+{extends file="layout.tpl"}
+
+{block name="content"}
+    <h1>404</h1>
+    <p>Page not found.</p>
+    <p><a href="/">Back to home</a></p>
+{/block}

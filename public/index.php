@@ -1,40 +1,30 @@
 <?php
 declare(strict_types=1);
 
-header('Content-Type: text/html; charset=utf-8');
+use App\Core\Container;
+use App\Core\NotFoundException;
+use App\Core\Request;
+use App\Core\Router;
 
-$db = ['status' => 'unknown', 'detail' => ''];
-try {
-    $dsn = sprintf(
-        'mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4',
-        getenv('DB_HOST') ?: 'mysql',
-        getenv('DB_PORT') ?: '3306',
-        getenv('DB_NAME') ?: 'blog',
-    );
-    $pdo = new PDO($dsn, getenv('DB_USER') ?: 'blog', getenv('DB_PASS') ?: 'blog', [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+$container = new Container(dirname(__DIR__));
+$router = new Router();
+
+$router->get('/', static function () use ($container): void {
+    $container->view()->display('home', [
+        'title' => 'Blog',
+        'message' => 'Skeleton is up. Pages will appear in the next steps.',
     ]);
-    $db['status'] = 'ok';
-    $db['detail'] = (string) $pdo->query('SELECT VERSION()')->fetchColumn();
-} catch (Throwable $e) {
-    $db['status'] = 'error';
-    $db['detail'] = $e->getMessage();
-}
+});
 
-$smartyInstalled = is_file(__DIR__ . '/../vendor/smarty/smarty/src/Smarty.php');
-?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Env check</title>
-</head>
-<body>
-<h1>Environment check</h1>
-<ul>
-    <li>PHP: <?= htmlspecialchars(PHP_VERSION, ENT_QUOTES, 'UTF-8') ?></li>
-    <li>MySQL: <?= htmlspecialchars($db['status'] . ' — ' . $db['detail'], ENT_QUOTES, 'UTF-8') ?></li>
-    <li>Smarty installed: <?= $smartyInstalled ? 'yes' : 'no (run composer install)' ?></li>
-</ul>
-</body>
-</html>
+try {
+    $router->dispatch(Request::method(), Request::path());
+} catch (NotFoundException) {
+    http_response_code(404);
+    $container->view()->display('404', ['title' => 'Page not found']);
+} catch (Throwable $e) {
+    http_response_code(500);
+    error_log($e->getMessage() . "\n" . $e->getTraceAsString());
+    echo 'Internal server error';
+}
