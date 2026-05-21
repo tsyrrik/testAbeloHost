@@ -1,0 +1,58 @@
+@use 'tokens' as t;
+
+.container {
+    max-width: t.$container-width;
+    margin: 0 auto;
+    padding: 0 t.$space-6;
+}
+
+.site-header {
+    padding: t.$space-5 0;
+    border-bottom: 1px solid t.$color-border;
+    background: t.$color-bg;
+}
+
+.site-header__brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: t.$color-text;
+    letter-spacing: -0.02em;
+
+    &:hover {
+        color: t.$color-accent;
+    }
+}
+
+.site-main {
+    min-height: 60vh;
+    padding: t.$space-8 t.$space-6;
+}
+
+.site-footer {
+    padding: t.$space-8 0;
+    border-top: 1px solid t.$color-border;
+    color: t.$color-muted;
+    margin-top: t.$space-12;
+}
+
+.breadcrumbs {
+    color: t.$color-muted;
+    font-size: 0.875rem;
+    margin-bottom: t.$space-6;
+
+    a {
+        color: t.$color-muted;
+
+        &:hover {
+            color: t.$color-accent;
+        }
+    }
+}
+
+.empty-state {
+    color: t.$color-muted;
+    background: t.$color-surface;
+    padding: t.$space-8;
+    border-radius: t.$radius;
+    text-align: center;
+}

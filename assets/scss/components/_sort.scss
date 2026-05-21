@@ -1,0 +1,30 @@
+@use '../tokens' as t;
+
+.sort {
+    display: flex;
+    align-items: center;
+    gap: t.$space-3;
+    margin-bottom: t.$space-6;
+    font-size: 0.9375rem;
+}
+
+.sort__label {
+    color: t.$color-muted;
+}
+
+.sort__link {
+    padding: t.$space-1 t.$space-3;
+    border-radius: t.$radius;
+    color: t.$color-text;
+    border: 1px solid transparent;
+
+    &:hover {
+        color: t.$color-accent;
+    }
+
+    &--active {
+        border-color: t.$color-accent;
+        color: t.$color-accent;
+        cursor: default;
+    }
+}

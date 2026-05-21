@@ -1,0 +1,45 @@
+@use '../tokens' as t;
+
+.pagination {
+    display: flex;
+    gap: t.$space-2;
+    margin-top: t.$space-8;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pagination__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0 t.$space-3;
+    border: 1px solid t.$color-border;
+    border-radius: t.$radius;
+    color: t.$color-text;
+    font-size: 0.9375rem;
+    transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+
+    &:hover {
+        border-color: t.$color-accent;
+        color: t.$color-accent;
+    }
+
+    &--current {
+        background: t.$color-accent;
+        border-color: t.$color-accent;
+        color: #fff;
+        cursor: default;
+
+        &:hover {
+            background: t.$color-accent;
+            color: #fff;
+        }
+    }
+
+    &--prev,
+    &--next {
+        padding: 0 t.$space-4;
+    }
+}

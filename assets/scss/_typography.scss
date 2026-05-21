@@ -1,0 +1,36 @@
+@use 'tokens' as t;
+
+body {
+    font-family: t.$font-stack;
+    color: t.$color-text;
+    background: t.$color-bg;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+h1, h2, h3 {
+    line-height: 1.25;
+    margin: 0 0 t.$space-4;
+    color: t.$color-text;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.125rem; }
+
+p {
+    margin: 0 0 t.$space-4;
+}
+
+.page-title {
+    margin: t.$space-6 0 t.$space-8;
+}
+
+a {
+    color: t.$color-accent;
+    transition: color 120ms ease;
+
+    &:hover {
+        color: t.$color-accent-hover;
+    }
+}

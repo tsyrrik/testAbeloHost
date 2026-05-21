@@ -1,0 +1,76 @@
+@use '../tokens' as t;
+
+.article-page {
+    max-width: 720px;
+    margin: 0 auto t.$space-12;
+}
+
+.article-page__header {
+    margin-bottom: t.$space-6;
+}
+
+.article-page__title {
+    margin-bottom: t.$space-3;
+}
+
+.article-page__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: t.$space-4;
+    color: t.$color-muted;
+    font-size: 0.875rem;
+
+    a {
+        color: t.$color-muted;
+
+        &:hover {
+            color: t.$color-accent;
+        }
+    }
+}
+
+.article-page__image {
+    width: 100%;
+    border-radius: t.$radius-lg;
+    margin-bottom: t.$space-6;
+}
+
+.article-page__lead {
+    font-size: 1.125rem;
+    color: t.$color-muted;
+    margin-bottom: t.$space-6;
+}
+
+.article-page__body {
+    font-size: 1.0625rem;
+
+    h2 {
+        margin-top: t.$space-8;
+        margin-bottom: t.$space-3;
+    }
+
+    ul {
+        padding-left: t.$space-6;
+        margin-bottom: t.$space-4;
+    }
+
+    li {
+        margin-bottom: t.$space-2;
+    }
+}
+
+.related {
+    margin-top: t.$space-12;
+    padding-top: t.$space-8;
+    border-top: 1px solid t.$color-border;
+}
+
+.related__title {
+    margin-bottom: t.$space-6;
+}
+
+.related__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: t.$space-6;
+}
