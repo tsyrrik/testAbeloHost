@@ -19,6 +19,11 @@ final class Container
     {
     }
 
+    public function basePath(): string
+    {
+        return $this->basePath;
+    }
+
     public function pdo(): PDO
     {
         return $this->pdo ??= Database::create();

@@ -32,10 +32,13 @@ composer: ## Install PHP dependencies (writes vendor/ and composer.lock to host)
 composer-update: ## Update PHP dependencies
 	$(DC) exec php composer update
 
+migrate: ## Apply pending database migrations
+	$(DC) exec php php bin/console migrate
+
 scss: ## Build CSS once from SCSS (runs on host, needs Node)
 	npm run scss
 
 scss-watch: ## Watch SCSS and rebuild on change (host)
 	npm run scss:watch
 
-.PHONY: help up down reset ps logs php mysql composer composer-update scss scss-watch
+.PHONY: help up down reset ps logs php mysql composer composer-update migrate scss scss-watch
