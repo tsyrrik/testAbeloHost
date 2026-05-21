@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use App\Controller\CategoryController;
 use App\Controller\HomeController;
 use App\Core\Container;
 use App\Core\NotFoundException;
@@ -18,6 +19,14 @@ $router->get('/', static function () use ($container): void {
         $container->categoryRepository(),
         $container->articleRepository(),
     ))->index();
+});
+
+$router->get('/category/{slug}', static function (array $params) use ($container): void {
+    (new CategoryController(
+        $container->view(),
+        $container->categoryRepository(),
+        $container->articleRepository(),
+    ))->show($params);
 });
 
 try {
