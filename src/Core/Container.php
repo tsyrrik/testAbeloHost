@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use PDO;
 use Smarty\Smarty;
 
@@ -10,6 +12,8 @@ final class Container
 {
     private ?PDO $pdo = null;
     private ?View $view = null;
+    private ?CategoryRepository $categoryRepository = null;
+    private ?ArticleRepository $articleRepository = null;
 
     public function __construct(private readonly string $basePath)
     {
@@ -33,5 +37,15 @@ final class Container
         $smarty->setEscapeHtml(true);
 
         return $this->view = new View($smarty);
+    }
+
+    public function categoryRepository(): CategoryRepository
+    {
+        return $this->categoryRepository ??= new CategoryRepository($this->pdo());
+    }
+
+    public function articleRepository(): ArticleRepository
+    {
+        return $this->articleRepository ??= new ArticleRepository($this->pdo());
     }
 }
