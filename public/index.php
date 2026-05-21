@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use App\Controller\ArticleController;
 use App\Controller\CategoryController;
 use App\Controller\HomeController;
 use App\Core\Container;
@@ -25,6 +26,13 @@ $router->get('/category/{slug}', static function (array $params) use ($container
     (new CategoryController(
         $container->view(),
         $container->categoryRepository(),
+        $container->articleRepository(),
+    ))->show($params);
+});
+
+$router->get('/article/{slug}', static function (array $params) use ($container): void {
+    (new ArticleController(
+        $container->view(),
         $container->articleRepository(),
     ))->show($params);
 });
