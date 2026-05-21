@@ -1,0 +1,11 @@
+/.env
+/vendor/
+/node_modules/
+/templates_c/*
+!/templates_c/.gitkeep
+/cache/*
+!/cache/.gitkeep
+/public/assets/css/*.map
+.DS_Store
+.idea/
+.vscode/

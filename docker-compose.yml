@@ -1,0 +1,58 @@
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    ports:como
+      - "${NGINX_PORT:-8080}:80"
+    volumes:
+      - ./:/var/www/html:cached
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - php
+    networks:
+      - blog
+
+  php:
+    build:
+      context: ./docker/php
+      args:
+        PHP_VERSION: "8.4"
+    volumes:
+      - ./:/var/www/html:cached
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${MYSQL_DATABASE:-blog}
+      DB_USER: ${MYSQL_USER:-blog}
+      DB_PASS: ${MYSQL_PASSWORD:-blog}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - blog
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-blog}
+      MYSQL_USER: ${MYSQL_USER:-blog}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-blog}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - blog
+
+volumes:
+  mysql_data:
+
+networks:
+  blog:
+    driver: bridge
