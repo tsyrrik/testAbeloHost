@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use App\Controller\HomeController;
 use App\Core\Container;
 use App\Core\NotFoundException;
 use App\Core\Request;
@@ -12,10 +13,11 @@ $container = new Container(dirname(__DIR__));
 $router = new Router();
 
 $router->get('/', static function () use ($container): void {
-    $container->view()->display('home', [
-        'title' => 'Blog',
-        'message' => 'Skeleton is up. Pages will appear in the next steps.',
-    ]);
+    (new HomeController(
+        $container->view(),
+        $container->categoryRepository(),
+        $container->articleRepository(),
+    ))->index();
 });
 
 try {
