@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Console\Application;
 use App\Console\Command\MigrateCommand;
+use App\Console\Command\SeedCommand;
 use App\Core\Container;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
@@ -11,5 +12,6 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 $container = new Container(dirname(__DIR__));
 $app = new Application($container);
 $app->register('migrate', MigrateCommand::class);
+$app->register('seed', SeedCommand::class);
 
 exit($app->run(array_slice($argv, 1)));

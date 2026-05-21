@@ -35,10 +35,16 @@ composer-update: ## Update PHP dependencies
 migrate: ## Apply pending database migrations
 	$(DC) exec php php bin/console migrate
 
+seed: ## Seed categories and articles (additive)
+	$(DC) exec php php bin/console seed
+
+seed-fresh: ## Truncate tables and re-seed from scratch
+	$(DC) exec php php bin/console seed --fresh
+
 scss: ## Build CSS once from SCSS (runs on host, needs Node)
 	npm run scss
 
 scss-watch: ## Watch SCSS and rebuild on change (host)
 	npm run scss:watch
 
-.PHONY: help up down reset ps logs php mysql composer composer-update migrate scss scss-watch
+.PHONY: help up down reset ps logs php mysql composer composer-update migrate seed seed-fresh scss scss-watch
