@@ -19,8 +19,10 @@ final class Router
 
     public function dispatch(string $method, string $path): void
     {
+        $matchMethod = $method === 'HEAD' ? 'GET' : $method;
+
         foreach ($this->routes as $route) {
-            if ($route['method'] !== $method) {
+            if ($route['method'] !== $matchMethod) {
                 continue;
             }
             if (preg_match($route['regex'], $path, $matches) === 1) {
@@ -39,7 +41,16 @@ final class Router
 
     private function compile(string $pattern): string
     {
-        $regex = preg_replace('#\{(\w+)\}#', '(?P<$1>[^/]+)', $pattern);
+        $parts = preg_split('#(\{\w+\})#', $pattern, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+        $regex = '';
+        foreach ($parts as $part) {
+            if (preg_match('#^\{(\w+)\}$#', $part, $m) === 1) {
+                $regex .= '(?P<' . $m[1] . '>[^/]+)';
+            } else {
+                $regex .= preg_quote($part, '#');
+            }
+        }
 
         return '#^' . $regex . '$#';
     }

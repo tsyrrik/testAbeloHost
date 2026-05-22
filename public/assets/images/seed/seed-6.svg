@@ -1,11 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-    <defs>
-        <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#facc15"/>
-            <stop offset="1" stop-color="#ea580c"/>
-        </linearGradient>
-    </defs>
-    <rect width="800" height="400" fill="url(#g6)"/>
-    <text x="400" y="215" font-family="system-ui, sans-serif" font-size="42"
-          fill="rgba(255,255,255,0.85)" text-anchor="middle">Placeholder 06</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Prepared meal on a ceramic plate">
+    <rect width="800" height="500" fill="#efe9df"/>
+    <circle cx="395" cy="250" r="178" fill="#ffffff"/>
+    <circle cx="395" cy="250" r="136" fill="#e7d4bd"/>
+    <path d="M284 248c54-62 139-76 218-27 47 30 70 70 70 70-119 40-215 38-288-43z" fill="#d26a43"/>
+    <path d="M329 202c53-17 99-6 139 31" stroke="#ffe1a8" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <g fill="#3f7e58">
+        <circle cx="327" cy="287" r="18"/>
+        <circle cx="466" cy="285" r="16"/>
+        <circle cx="420" cy="190" r="14"/>
+        <circle cx="505" cy="243" r="13"/>
+    </g>
+    <path d="M122 145l139 210M678 138L531 358" stroke="#a9a093" stroke-width="15" stroke-linecap="round"/>
+    <path d="M109 154l-30-54M140 145l-17-61M167 151l2-61" stroke="#a9a093" stroke-width="12" stroke-linecap="round"/>
 </svg>

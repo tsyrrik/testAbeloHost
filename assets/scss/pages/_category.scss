@@ -11,6 +11,12 @@
 
 .article-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: t.$space-6;
+    gap: 1.35rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 560px) {
+    .article-list {
+        grid-template-columns: 1fr;
+    }
 }

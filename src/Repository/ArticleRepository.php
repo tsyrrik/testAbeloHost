@@ -8,7 +8,6 @@ use PDO;
 
 final class ArticleRepository
 {
-    /** Whitelist of sort keys → SQL column. */
     private const SORTS = [
         'date' => 'a.published_at',
         'views' => 'a.views',
@@ -18,12 +17,7 @@ final class ArticleRepository
     {
     }
 
-    /**
-     * Latest N articles per category in a single query (MySQL 8 window function).
-     * Returned as map: category_id => list<article>.
-     *
-     * @return array<int, list<array<string, mixed>>>
-     */
+    /** @return array<int, list<array<string, mixed>>> category_id => articles */
     public function latestGroupedByCategories(int $perCategory = 3): array
     {
         $sql = <<<SQL
@@ -56,22 +50,23 @@ final class ArticleRepository
         return $grouped;
     }
 
-    /**
-     * @return array{items: list<array<string, mixed>>, total: int}
-     */
+    /** @return array{items: list<array<string, mixed>>, total: int, page: int} */
     public function paginateByCategory(int $categoryId, string $sort, int $page, int $perPage): array
     {
         if (!isset(self::SORTS[$sort])) {
             throw new InvalidArgumentException("Unknown sort: {$sort}");
         }
         $orderColumn = self::SORTS[$sort];
-        $offset = max(0, ($page - 1) * $perPage);
 
         $countStmt = $this->pdo->prepare(
             'SELECT COUNT(*) FROM article_categories WHERE category_id = :cat'
         );
         $countStmt->execute(['cat' => $categoryId]);
         $total = (int) $countStmt->fetchColumn();
+
+        $pages = max(1, (int) ceil($total / $perPage));
+        $page = max(1, min($page, $pages));
+        $offset = ($page - 1) * $perPage;
 
         $sql = <<<SQL
             SELECT a.id, a.slug, a.title, a.description, a.image_path,
@@ -92,12 +87,10 @@ final class ArticleRepository
         return [
             'items' => array_map(self::hydrate(...), $stmt->fetchAll()),
             'total' => $total,
+            'page' => $page,
         ];
     }
 
-    /**
-     * Article + its categories. Returns null if not found.
-     */
     public function findDetailedBySlug(string $slug): ?array
     {
         $stmt = $this->pdo->prepare(
@@ -117,9 +110,7 @@ final class ArticleRepository
         return $article;
     }
 
-    /**
-     * @return list<array{id:int, slug:string, title:string}>
-     */
+    /** @return list<array{id:int, slug:string, title:string}> */
     public function findCategoriesForArticle(int $articleId): array
     {
         $stmt = $this->pdo->prepare(
@@ -144,9 +135,6 @@ final class ArticleRepository
     }
 
     /**
-     * Related articles: share at least one category with the given article.
-     * Ranked by number of shared categories desc, then by recency.
-     *
      * @param list<int> $categoryIds
      * @return list<array<string, mixed>>
      */
@@ -189,8 +177,6 @@ final class ArticleRepository
     }
 
     /**
-     * Cast numeric columns; passthrough strings/nulls.
-     *
      * @param array<string, mixed> $row
      * @return array<string, mixed>
      */

@@ -1,12 +1,10 @@
-// Design tokens. Single source of truth for colors, spacing, radii.
-
-$color-text:    #1f2937;
-$color-muted:   #6b7280;
+$color-text:    #17292f;
+$color-muted:   #6f7f85;
 $color-bg:      #ffffff;
-$color-surface: #f8fafc;
-$color-border:  #e5e7eb;
-$color-accent:  #4f46e5;
-$color-accent-hover: #4338ca;
+$color-surface: #f7f9f9;
+$color-border:  #dfe7e9;
+$color-accent:  #2c5d69;
+$color-accent-hover: #1f4650;
 
 $space-1: 0.25rem;
 $space-2: 0.5rem;
@@ -18,9 +16,9 @@ $space-8: 2rem;
 $space-10: 2.5rem;
 $space-12: 3rem;
 
-$radius:    8px;
-$radius-lg: 12px;
+$radius:    4px;
+$radius-lg: 6px;
 
-$container-width: 1080px;
+$container-width: 1040px;
 
-$font-stack: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-stack: Arial, Helvetica, sans-serif;

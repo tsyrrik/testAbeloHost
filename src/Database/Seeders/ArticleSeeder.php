@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Database\Seeders;
 
 use PDO;
+use RuntimeException;
 
 final class ArticleSeeder
 {
@@ -11,11 +12,7 @@ final class ArticleSeeder
     {
     }
 
-    /**
-     * Insert (or update) articles and rebuild their category links.
-     *
-     * @param array<string, int> $categoryMap slug => id
-     */
+    /** @param array<string, int> $categoryMap slug => id */
     public function run(array $categoryMap): int
     {
         $data = require __DIR__ . '/data/articles.php';
@@ -30,7 +27,6 @@ final class ArticleSeeder
                 description = VALUES(description),
                 body = VALUES(body),
                 image_path = VALUES(image_path),
-                views = VALUES(views),
                 published_at = VALUES(published_at)'
         );
         $findId = $this->pdo->prepare('SELECT id FROM articles WHERE slug = :slug');
@@ -60,7 +56,11 @@ final class ArticleSeeder
             $deleteLinks->execute(['id' => $articleId]);
             foreach ($row['categories'] as $catSlug) {
                 if (!isset($categoryMap[$catSlug])) {
-                    continue;
+                    throw new RuntimeException(sprintf(
+                        'Article "%s" references unknown category slug "%s"',
+                        $row['slug'],
+                        $catSlug,
+                    ));
                 }
                 $insertLink->execute([
                     'article_id' => $articleId,

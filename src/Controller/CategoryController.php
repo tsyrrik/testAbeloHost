@@ -43,7 +43,7 @@ final class CategoryController
             self::PER_PAGE,
         );
 
-        $paginator = new Paginator($result['total'], self::PER_PAGE, $page);
+        $paginator = new Paginator($result['total'], self::PER_PAGE, $result['page']);
 
         $this->view->display('category', [
             'title' => $category['title'],

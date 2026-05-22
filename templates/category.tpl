@@ -13,11 +13,11 @@
     {include file="partials/sort_controls.tpl"}
 
     {if $articles}
-        <div class="article-list">
-            {foreach $articles as $article}
-                {include file="partials/article_card.tpl" article=$article}
-            {/foreach}
-        </div>
+            <div class="article-list">
+                {foreach $articles as $article}
+                    {include file="partials/article_card.tpl" article=$article show_views=true}
+                {/foreach}
+            </div>
 
         {include file="partials/pagination.tpl"}
     {else}

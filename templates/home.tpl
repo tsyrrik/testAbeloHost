@@ -1,8 +1,6 @@
 {extends file="layout.tpl"}
 
 {block name="content"}
-    <h1 class="page-title">{$title}</h1>
-
     {if $sections}
         {foreach $sections as $section}
             <section class="category-section">
@@ -10,9 +8,7 @@
                     <h2 class="category-section__title">
                         <a href="/category/{$section.category.slug}">{$section.category.title}</a>
                     </h2>
-                    {if $section.category.description}
-                        <p class="category-section__description">{$section.category.description}</p>
-                    {/if}
+                    <a class="category-section__more" href="/category/{$section.category.slug}">View All</a>
                 </header>
 
                 <div class="category-section__articles">
@@ -20,10 +16,6 @@
                         {include file="partials/article_card.tpl" article=$article}
                     {/foreach}
                 </div>
-
-                <a class="category-section__more" href="/category/{$section.category.slug}">
-                    All articles &rarr;
-                </a>
             </section>
         {/foreach}
     {else}

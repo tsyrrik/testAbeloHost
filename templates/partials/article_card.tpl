@@ -7,11 +7,16 @@
     <h3 class="article-card__title">
         <a href="/article/{$article.slug}">{$article.title}</a>
     </h3>
+    <div class="article-card__meta">
+        <time class="article-card__date" datetime="{$article.published_at}">
+            {$article.published_at|date_format:"%B %e, %Y"}
+        </time>
+        {if $show_views|default:false}
+            <span class="article-card__views">{$article.views} views</span>
+        {/if}
+    </div>
     {if $article.description}
         <p class="article-card__description">{$article.description}</p>
     {/if}
-    <div class="article-card__meta">
-        <time datetime="{$article.published_at}">{$article.published_at|date_format:"%Y-%m-%d"}</time>
-        <span class="article-card__views">{$article.views} views</span>
-    </div>
+    <a class="article-card__read-more" href="/article/{$article.slug}">Continue Reading</a>
 </article>

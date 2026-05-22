@@ -1,11 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Mountain landscape at sunrise">
     <defs>
-        <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#0ea5e9"/>
-            <stop offset="1" stop-color="#1e3a8a"/>
+        <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#ffcf8b"/>
+            <stop offset="0.56" stop-color="#9bb8d3"/>
+            <stop offset="1" stop-color="#e8eee8"/>
         </linearGradient>
     </defs>
-    <rect width="800" height="400" fill="url(#g4)"/>
-    <text x="400" y="215" font-family="system-ui, sans-serif" font-size="42"
-          fill="rgba(255,255,255,0.85)" text-anchor="middle">Placeholder 04</text>
+    <rect width="800" height="500" fill="url(#sky)"/>
+    <circle cx="620" cy="120" r="56" fill="#fff1b8"/>
+    <path d="M0 370l180-190 130 133 120-160 210 217z" fill="#526b69"/>
+    <path d="M180 180l46 105-61-44-62 69zM430 153l70 105-80-48-59 79z" fill="#e7eee9"/>
+    <path d="M0 330l124-106 142 120 107-80 132 89 113-72 182 93v126H0z" fill="#2f5f62"/>
 </svg>

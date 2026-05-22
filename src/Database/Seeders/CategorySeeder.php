@@ -11,11 +11,7 @@ final class CategorySeeder
     {
     }
 
-    /**
-     * Insert (or update) categories from the data file.
-     *
-     * @return array<string, int> slug => id
-     */
+    /** @return array<string, int> slug => id */
     public function run(): array
     {
         $data = require __DIR__ . '/data/categories.php';

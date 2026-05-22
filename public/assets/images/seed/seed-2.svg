@@ -1,11 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Portrait in blue studio light">
     <defs>
-        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#f97316"/>
-            <stop offset="1" stop-color="#db2777"/>
+        <linearGradient id="portrait-bg" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#2852b8"/>
+            <stop offset="0.55" stop-color="#8ba7ff"/>
+            <stop offset="1" stop-color="#f2c6cc"/>
+        </linearGradient>
+        <linearGradient id="face" x1="0" x2="1">
+            <stop offset="0" stop-color="#5da4ff"/>
+            <stop offset="1" stop-color="#f4b2a3"/>
         </linearGradient>
     </defs>
-    <rect width="800" height="400" fill="url(#g2)"/>
-    <text x="400" y="215" font-family="system-ui, sans-serif" font-size="42"
-          fill="rgba(255,255,255,0.85)" text-anchor="middle">Placeholder 02</text>
+    <rect width="800" height="500" fill="url(#portrait-bg)"/>
+    <ellipse cx="405" cy="560" rx="185" ry="205" fill="#2d3340"/>
+    <path d="M312 190c12-85 73-128 146-109 72 18 104 88 77 174-24 76-72 129-130 129-61 0-105-65-93-194z" fill="#2f2a2f"/>
+    <path d="M320 219c0-91 44-141 102-141 59 0 108 51 108 141 0 91-46 158-105 158-60 0-105-67-105-158z" fill="url(#face)"/>
+    <path d="M300 201c43-8 96-41 116-86 34 48 87 67 130 70-13-80-62-127-135-127-70 0-113 52-111 143z" fill="#26252b"/>
+    <ellipse cx="340" cy="238" rx="15" ry="28" fill="#75afff"/>
+    <ellipse cx="530" cy="238" rx="15" ry="28" fill="#eeb0a7"/>
+    <path d="M373 230h28M452 230h28" stroke="#1f2937" stroke-width="8" stroke-linecap="round"/>
+    <path d="M424 230l-12 62h30" fill="none" stroke="#925d67" stroke-width="7" stroke-linecap="round"/>
+    <path d="M381 324c29 21 64 22 94 0" fill="none" stroke="#7b3f4a" stroke-width="7" stroke-linecap="round"/>
 </svg>

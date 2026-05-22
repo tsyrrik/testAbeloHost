@@ -1,18 +1,30 @@
 @use '../tokens' as t;
 
 .category-section {
-    margin-bottom: t.$space-12;
+    margin-bottom: 4.5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .category-section__header {
-    margin-bottom: t.$space-6;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.1rem;
 }
 
 .category-section__title {
-    margin: 0 0 t.$space-2;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin: 0;
+    text-transform: uppercase;
 
     a {
         color: t.$color-text;
+        text-decoration: none;
 
         &:hover {
             color: t.$color-accent;
@@ -27,21 +39,27 @@
 
 .category-section__articles {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: t.$space-6;
-    margin-bottom: t.$space-5;
+    gap: 1.35rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .category-section__more {
-    display: inline-block;
-    padding: t.$space-2 t.$space-4;
-    border: 1px solid t.$color-accent;
-    border-radius: t.$radius;
-    color: t.$color-accent;
-    font-size: 0.9375rem;
+    color: t.$color-accent-hover;
+    font-size: 0.6875rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
 
     &:hover {
-        background: t.$color-accent;
-        color: #fff;
+        color: t.$color-text;
+    }
+}
+
+@media (max-width: 560px) {
+    .category-section {
+        margin-bottom: 4rem;
+    }
+
+    .category-section__articles {
+        grid-template-columns: 1fr;
     }
 }

@@ -9,7 +9,7 @@
 <body>
 <header class="site-header">
     <div class="container">
-        <a class="site-header__brand" href="/">Blog</a>
+        <a class="site-header__brand" href="/">Blogy.</a>
     </div>
 </header>
 
@@ -19,7 +19,7 @@
 
 <footer class="site-footer">
     <div class="container">
-        <small>&copy; {$smarty.now|date_format:"%Y"} Blog</small>
+        <small>Copyright &copy;2025. All Rights Reserved.</small>
     </div>
 </footer>
 </body>

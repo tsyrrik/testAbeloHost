@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Core\NotFoundException;
 use App\Core\View;
 use App\Repository\ArticleRepository;
+use App\Support\HtmlSanitizer;
 
 final class ArticleController
 {
@@ -26,6 +27,7 @@ final class ArticleController
 
         $this->articles->incrementViews($article['id']);
         $article['views']++;
+        $article['body'] = HtmlSanitizer::articleBody($article['body']);
 
         $categoryIds = array_map(static fn (array $c): int => $c['id'], $article['categories']);
         $related = $this->articles->findRelated($article['id'], $categoryIds, self::RELATED_LIMIT);

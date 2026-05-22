@@ -17,12 +17,6 @@ final class Paginator
         $this->page = max(1, min($page, $this->pages));
     }
 
-    /**
-     * @return array{
-     *     total:int, per_page:int, page:int, pages:int,
-     *     has_prev:bool, has_next:bool, range:list<int>
-     * }
-     */
     public function toArray(): array
     {
         return [

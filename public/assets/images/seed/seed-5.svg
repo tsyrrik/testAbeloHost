@@ -1,11 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-    <defs>
-        <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#a855f7"/>
-            <stop offset="1" stop-color="#6366f1"/>
-        </linearGradient>
-    </defs>
-    <rect width="800" height="400" fill="url(#g5)"/>
-    <text x="400" y="215" font-family="system-ui, sans-serif" font-size="42"
-          fill="rgba(255,255,255,0.85)" text-anchor="middle">Placeholder 05</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Minimal home office desk">
+    <rect width="800" height="500" fill="#f2efe8"/>
+    <rect x="105" y="130" width="340" height="214" rx="12" fill="#263a43"/>
+    <rect x="126" y="151" width="298" height="163" rx="6" fill="#d9e7ef"/>
+    <path d="M170 360h210M238 344h72v45h-72z" stroke="#263a43" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <rect x="510" y="242" width="150" height="86" rx="8" fill="#b55d43"/>
+    <path d="M520 242l34 86M558 242l34 86M596 242l34 86" stroke="#8c4433" stroke-width="8"/>
+    <path d="M583 239c-30-56-11-119 49-154 42 64 21 124-49 154z" fill="#488263"/>
+    <path d="M601 241c30-58 88-81 154-53-22 74-78 95-154 53z" fill="#5da171"/>
+    <circle cx="232" cy="222" r="30" fill="#f6bd60"/>
+    <path d="M164 275h170" stroke="#8aa6b1" stroke-width="14" stroke-linecap="round"/>
 </svg>

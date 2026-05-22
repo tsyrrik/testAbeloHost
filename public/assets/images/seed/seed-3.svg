@@ -1,11 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-    <defs>
-        <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#16a34a"/>
-            <stop offset="1" stop-color="#65a30d"/>
-        </linearGradient>
-    </defs>
-    <rect width="800" height="400" fill="url(#g3)"/>
-    <text x="400" y="215" font-family="system-ui, sans-serif" font-size="42"
-          fill="rgba(255,255,255,0.85)" text-anchor="middle">Placeholder 03</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Coffee grounds in portafilter">
+    <rect width="800" height="500" fill="#d8ddd6"/>
+    <circle cx="315" cy="238" r="142" fill="#1d2f34"/>
+    <circle cx="315" cy="238" r="110" fill="#8b5330"/>
+    <g fill="#5f341e" opacity="0.7">
+        <circle cx="276" cy="200" r="10"/>
+        <circle cx="338" cy="185" r="13"/>
+        <circle cx="370" cy="243" r="9"/>
+        <circle cx="287" cy="282" r="12"/>
+        <circle cx="329" cy="303" r="8"/>
+        <circle cx="243" cy="244" r="9"/>
+    </g>
+    <path d="M446 213h270c37 0 67 30 67 67s-30 67-67 67H446z" fill="#26383e"/>
+    <path d="M456 233h255c25 0 46 21 46 47s-21 47-46 47H456z" fill="#17282e"/>
+    <ellipse cx="623" cy="130" rx="110" ry="73" fill="#f4eadc"/>
+    <ellipse cx="623" cy="130" rx="78" ry="45" fill="#6e4328"/>
+    <path d="M148 397c109 36 210 36 304 0 86-33 163-34 232-4v107H148z" fill="#c7cec7"/>
 </svg>

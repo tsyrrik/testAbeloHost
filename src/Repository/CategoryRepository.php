@@ -11,11 +11,7 @@ final class CategoryRepository
     {
     }
 
-    /**
-     * Categories that have at least one article, ordered by title.
-     *
-     * @return array<int, array{id:int, slug:string, title:string, description:?string}>
-     */
+    /** @return list<array{id:int, slug:string, title:string, description:?string}> */
     public function findAllWithArticles(): array
     {
         $sql = <<<SQL
@@ -45,10 +41,7 @@ final class CategoryRepository
         return $row === false ? null : self::hydrate($row);
     }
 
-    /**
-     * @param array{id:string|int, slug:string, title:string, description:?string} $row
-     * @return array{id:int, slug:string, title:string, description:?string}
-     */
+    /** @return array{id:int, slug:string, title:string, description:?string} */
     private static function hydrate(array $row): array
     {
         return [

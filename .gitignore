@@ -6,6 +6,12 @@
 /cache/*
 !/cache/.gitkeep
 /public/assets/css/*.map
+/.phpunit.cache/
+.phpunit.result.cache
 .DS_Store
 .idea/
 .vscode/
+
+# Local assignment artifacts (not part of the project itself)
+/*.docx
+/пример.jpg

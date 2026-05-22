@@ -41,10 +41,13 @@ seed: ## Seed categories and articles (additive)
 seed-fresh: ## Truncate tables and re-seed from scratch
 	$(DC) exec php php bin/console seed --fresh
 
+test: ## Run the PHPUnit test suite (unit + integration)
+	$(DC) exec php vendor/bin/phpunit
+
 scss: ## Build CSS once from SCSS (runs on host, needs Node)
 	npm run scss
 
 scss-watch: ## Watch SCSS and rebuild on change (host)
 	npm run scss:watch
 
-.PHONY: help up down reset ps logs php mysql composer composer-update migrate seed seed-fresh scss scss-watch
+.PHONY: help up down reset ps logs php mysql composer composer-update migrate seed seed-fresh test scss scss-watch
